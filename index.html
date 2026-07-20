@@ -240,13 +240,9 @@ footer a { color: var(--accent-dark); font-weight: 700; }
 <body>
 
 <header class="hero">
-  <div class="hero-label">South Seminole Academy</div>
+  <div class="hero-label">South Seminole Academy · 2025&#8211;2026</div>
   <h1 class="hero-title">One Stop Shop</h1>
   <p class="hero-sub">Everything staff need this year, all in one place — schedules, forms, PLC resources, testing folders, and more.</p>
-  <a class="hero-folder-btn" href="https://drive.google.com/drive/folders/1gOFFFPQ3H9nuzqQEKe6piU7Wi4CZkkew?usp=sharing" target="_blank" rel="noopener">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>
-    Open Master Drive Folder
-  </a>
 </header>
 
 <div class="search-wrap">
@@ -277,73 +273,97 @@ footer a { color: var(--accent-dark); font-weight: 700; }
    To add/remove/replace a link during the year, just edit this array —
    nothing else on the page needs to change. */
 const resources = [
-  // PrePlan Items
-  { category: "PrePlan Items", title: "PrePlan Schedule", url: "https://docs.google.com/document/d/1IpBN0HY2GiPXtdBpJC2psO4WdY1AhNW5WuheRM8p-EY/edit?usp=sharing" },
-  { category: "PrePlan Items", title: "Kickoff PPT", url: "https://docs.google.com/presentation/d/1XcAyttjOf1Z4VdWj05c136q8bWUaSjfC/edit?usp=sharing" },
-  { category: "PrePlan Items", title: "Common Board and Room Items", url: "https://docs.google.com/document/d/10V_9wYM0VKZuei5GlD6ebdokCBJHcoc9GE8sI8Bf_UM/edit?usp=sharing" },
-  { category: "PrePlan Items", title: "Leadership Jumpstart", url: "https://drive.google.com/drive/folders/1pGYI5nbZ4S56J1hlfptbdJyzFIG0ahQg?usp=sharing" },
-  { category: "PrePlan Items", title: "Master Calendar", url: "https://docs.google.com/document/d/1iu3LHPNREUmfjxak1JEDwH4t3btjE49oKVZrAYl053s/edit?usp=sharing" },
-  { category: "PrePlan Items", title: "HR Seminar", url: "https://docs.google.com/presentation/d/1SZBRMCT-iHbr71V9Bk5X5IvRxK1Mp6CO/edit?usp=sharing" },
-  { category: "PrePlan Items", title: "Leadership Team Responsibilities", url: "https://docs.google.com/spreadsheets/d/1Rz7SSRpf6mOfP9FwI2UGKMaUtxNLs9c7/edit?usp=sharing" },
+  // Housekeeping
+  { category: "Housekeeping", title: "PrePlan Schedule", url: "https://docs.google.com/document/d/15os9H9Sc2ktf9TXeW-fpTTKmA4mV1zxkZNDEQIBZiV8/edit?usp=sharing" },
+  { category: "Housekeeping", title: "Principal's Welcome Back Letter", url: "https://drive.google.com/file/d/1sobWgF98q4iz2ssYPc5iXfaIzrqr4eJz/view?usp=sharing" },
+  { category: "Housekeeping", title: "PrePlan Presentation", url: "https://docs.google.com/presentation/d/1fwEF_pUAjZ5sakxAfjDb6jdE26SYc_FHkFC1sI0LgEQ/edit?usp=sharing" },
+  { category: "Housekeeping", title: "Master Schedule", url: "https://docs.google.com/spreadsheets/d/1JEsYqLGk_Q_4a7vCW2lvWE-dC4QIWuEg/edit?usp=sharing" },
+  { category: "Housekeeping", title: "Schedule Change Request Form", url: "https://docs.google.com/document/d/1TO2Qgj4CzHAo0jIEoxzMad2S_cXbGdde/edit?usp=sharing" },
+  { category: "Housekeeping", title: "PD/Events Calendar", url: "https://drive.google.com/file/d/1vUTOXp2nPGiL2olpeqtHbqcRvoG4A5Qt/view?usp=sharing" },
+  { category: "Housekeeping", title: "SCPS Cell Phone Policy", url: "https://drive.google.com/file/d/1ClyAf5xY8T16GT7cb3DMhzB_A4aGRbqF/view?usp=sharing" },
+  { category: "Housekeeping", title: "Multisensory Reading Requirement", url: "https://drive.google.com/file/d/1iqZ46s2Qx32EhgQyOVh2InFVSYYEwPEo/view?usp=sharing" },
+  { category: "Housekeeping", title: "Risk Assessment Protocol", url: "https://drive.google.com/file/d/1QJDVIaVDjXQo2QCTsAipot_RJi8n_2e0/view?usp=sharing" },
+  { category: "Housekeeping", title: "How to Request a Field Trip", url: "https://docs.google.com/document/d/1kYolZR20GPP64ixhdPvC3FUsFC5ae6Ug/edit?usp=sharing" },
+  { category: "Housekeeping", title: "Field Trip Transportation Request", url: "https://student-transportation.tylerapp.com/FLSeminoleCoSD/TripEx/Home" },
+  { category: "Housekeeping", title: "Drill Procedures", url: "https://drive.google.com/drive/folders/1XY1lX8nlwQo5hp9JyUWVZGJjsHNkR6zj" },
+  { category: "Housekeeping", title: "15 Minute Clinic Guide", url: "https://drive.google.com/file/d/1cFGkwFWSESwvRKhEelWQOjC_avUb19cq/view?usp=sharing" },
+  { category: "Housekeeping", title: "SSA Map", url: "https://drive.google.com/file/d/1mdGZKMhMb2-ODcmMfNwz9YEqBdYRYlag/view?usp=sharing" },
+  { category: "Housekeeping", title: "Comp Day Form", url: "https://drive.google.com/file/d/1ShU9e7Tac0mXyB6ZmQbwc4ZDTDhm8Yw9/view?usp=sharing" },
+  { category: "Housekeeping", title: "Work Order Request", url: "https://drive.google.com/file/d/1CuF2cQzGoWZeBqhxrzisKGHFUx4pG8VJ/view?usp=sharing" },
 
-  // Leadership Items
-  { category: "Leadership Items", title: "Monday Morning Leadership (Mental Health lessons)", url: "https://docs.google.com/document/d/15cZRgAZPLD3oFs9zHBTmZeA1aO1kWXBGIuON96CkIhw/edit?usp=sharing" },
-  { category: "Leadership Items", title: "CNN 10", url: "https://www.cnn.com/cnn10" },
-  { category: "Leadership Items", title: "CNN 10 Questions", url: "https://docs.google.com/presentation/d/1fQ1Tw7dh0x-kKgb0IIR_1pV92tBz8nbpF7wLw4hTPq8/edit?usp=sharing" },
-  { category: "Leadership Items", title: "7 Habits Reference Sheet", url: "https://limweekly.org/wordpress/wp-content/uploads/2019/04/EDU1931609_LIMWKLY_7H_Practicies_Reference_Sheet_v1.0.2_HR.pdf" },
-  { category: "Leadership Items", title: "Leader In Me", url: "https://limweekly.org/new-staff-start-up-strategies/" },
-  { category: "Leadership Items", title: "Digital Leadership Notebook", url: "https://docs.google.com/presentation/d/1aLQVhgdQfggp735CmfhRyPwf1nlfyGRDidA87u7ssWc/copy" },
-  { category: "Leadership Items", title: "PBL for Elevate", url: "https://drive.google.com/drive/folders/11mobBFEc8KYWdJg_bvyfk9fzxluGrac_?usp=sharing" },
-  { category: "Leadership Items", title: "Mental Health MML", url: "https://docs.google.com/document/d/10l60B0OL5eVvANV-nVIckAPiOShDiGfHN417COqVlGE/edit?usp=sharing" },
+  // MYP/Magnet Items
+  { category: "MYP/Magnet Items", title: "RISE Overview", url: "https://docs.google.com/document/d/17WCjgcZVLvl7kB20QDy6y8TpEKjuW0_YWMUPZOoc3Fw/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "RISE Lessons", url: "https://docs.google.com/document/d/1TumJjkuevIYny05GhJN8N2-zPaeUx0EntjTCAP1lb_k/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "Day 1 Jumpstart", url: "https://docs.google.com/presentation/d/1JQrTC_0k9EoKia2-z1hKCURKozeAlVs92CpqHwV2BYM/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "School-wide MYP Implementation", url: "https://drive.google.com/drive/folders/1vkbwMX3x19a1wzYK8yrqL7yWF_oSxja1?usp=drive_link" },
+  { category: "MYP/Magnet Items", title: "MYP Learner Profile", url: "https://drive.google.com/file/d/1pAOruDWcE8ekgqMn0Hle99a_j8mBcZMy/view?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "MYP Glossary of Terms", url: "https://docs.google.com/document/d/1MH8ZGblT9LfPIdGcwudaLThCVF5OybjG83iQSh-tRDY/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "Leadership Essentials (Academy Expectations)", url: "https://docs.google.com/presentation/d/1IjUSEhIayF2gcUfHrR6n7tOBCs2incB4/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "Class Greeter", url: "https://docs.google.com/document/d/1P3_Bt5I5xLng0e-APNOL_PRg_zl-8_N0djfcJMf09Nk/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "SSA Affirmation", url: "https://docs.google.com/document/d/1F_xocJiCGpM11q3kqBGlfaDsF-IuKt6u/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "MYP & Grant Overview", url: "https://drive.google.com/file/d/15UHKIluny2LEO0O_Btw2ktPyMjwv8YjO/view?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "CTE Google Site", url: "https://sites.google.com/myscps.us/ssa-career-exploration/home?read_current=1" },
+  { category: "MYP/Magnet Items", title: "New Magnet Theme Branding Kit", url: "https://drive.google.com/drive/folders/1ayyVPIxUlJXLLj4FxofKGPoWQY9Ynxf4?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "Tynker Lab Sign Up", url: "https://docs.google.com/spreadsheets/d/1U4Tvk7z2LqtH6wU-zEFuQ8z7i1kRf8f_5AwpsaplSrk/edit?usp=drive_link" },
+  { category: "MYP/Magnet Items", title: "Simulation Lab Sign Up", url: "https://docs.google.com/spreadsheets/d/1rXInYxgVHQL_ZDg3PhPFzq3Bfr1KeG6zAEneIfQnxXg/edit?usp=drive_link" },
+  { category: "MYP/Magnet Items", title: "Maker Lab Sign Up", url: "https://docs.google.com/spreadsheets/u/0/d/120OR28Z-FLEWWMLt090sDnKC9S4xAs2p2IfGLbsIcmM/edit" },
+  { category: "MYP/Magnet Items", title: "Banquet Hall Lab Sign-Up", url: "https://docs.google.com/spreadsheets/d/1CRMMROpLAmAMFPDN6T_l4jgt9pO8E-rMWOPqKihYjAk/edit?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "SSA Organizational Chart", url: "https://drive.google.com/file/d/1NcBfgkmGgBb_1lhqSi8DuLyqifcU2guJ/view?usp=sharing" },
+  { category: "MYP/Magnet Items", title: "Career and Technical Education Courses - Resources", url: "https://sites.google.com/myscps.us/ssa-career-exploration?usp=sharing" },
 
-  // SSA Items
-  { category: "SSA Items", title: "Bell Schedule", url: "https://drive.google.com/file/d/18qAmxdkp-1FqIWoIcJKn67Tq9pVyZZvE/view?usp=sharing" },
-  { category: "SSA Items", title: "Staff Handbook", url: "https://docs.google.com/document/d/1Osp2gH6FktPCakSRO9EUJdnxj4j-5Yd6/edit?usp=sharing" },
-  { category: "SSA Items", title: "Bus List", url: "https://docs.google.com/document/d/1lqph8jjIPjbmyJc0AG7wQxyIelUopgHc4QAf7PMz1kk/edit?usp=sharing" },
-  { category: "SSA Items", title: "Bus QR Code", url: "https://docs.google.com/document/d/1-nP7RuJbY2SmjCaIaUeRX4kWNzYCT5DY4Ec7qOSAGlg/edit?usp=sharing" },
-  { category: "SSA Items", title: "HERO", url: "https://access.heropowered.com/" },
-  { category: "SSA Items", title: "Phone List", url: "https://docs.google.com/spreadsheets/d/1imLn-fsMhLXth1Dv2A2VNsZNziy0kOiF/edit?usp=sharing" },
-  { category: "SSA Items", title: "Supply Replenishment (Form)", url: "https://docs.google.com/forms/d/e/1FAIpQLSczViU_-ANUmXu-Q7S9vSx1ubveySFys2wYMlb9tplQKG2VeA/viewform?usp=sf_link" },
-  { category: "SSA Items", title: "Sign in / Sign out QRs", url: "https://docs.google.com/presentation/d/1ivXXBM-XDT_MF9m50-EAjI5oLypZXo-ovRLsOHmIR-8/edit#slide=id.p" },
-  { category: "SSA Items", title: "Field Day Schedule", url: "https://drive.google.com/file/d/18tp1gf-SrmLQKWkx7YSwg4brI6YZDLIA/view?usp=sharing" },
-  { category: "SSA Items", title: "8th Grade Field Day Overview", url: "https://drive.google.com/file/d/15Fq1_DwGvHY0PHdHODnKQuhRLxuHfZ_F/view?usp=sharing" },
-  { category: "SSA Items", title: "6th/7th STORM Day Overview", url: "https://drive.google.com/file/d/1hqELny7lJxO73KF9SN-jkekasBIwfZFy/view?usp=sharing" },
-  { category: "SSA Items", title: "Seating Charts", url: "https://docs.google.com/spreadsheets/d/1IRQcMX9UMkgMpZfxgMPjvdiyJeNmtkKhmK8tiUTX1iA/edit?usp=sharing" },
-  { category: "SSA Items", title: "SRO Presentation - Raptor", url: "https://docs.google.com/presentation/d/1VHK2q39QwgFeCBihGw-u5oL_tvAsS2fA/edit?usp=sharing" },
-
-  // Discipline Items
-  { category: "Discipline Items", title: "Dress Code", url: "https://drive.google.com/file/d/1lMzkhMyiM0bM7jAHLsDAlW75zc-F9zjc/view?usp=sharing" },
-  { category: "Discipline Items", title: "Student Reflection Sheet", url: "https://docs.google.com/document/d/1b2tb8CxKjeTQS4RKJ0CEdsRs3_kDm1YQ/edit?usp=sharing" },
-  { category: "Discipline Items", title: "Behavior Tracking Form", url: "https://docs.google.com/document/d/1cdI5HBSz-9lneMjZ3THwu-C-2o8U0vIg/copy" },
-  { category: "Discipline Items", title: "Leadership Tool and Graphic Organizers", url: "https://drive.google.com/file/d/1_ggOPTn9oVXMCNMztXU-xrSpsB6C73FP/view?usp=sharing" },
-  { category: "Discipline Items", title: "Discipline 101", url: "https://seminoleschools-my.sharepoint.com/:p:/g/personal/hernanlt_myscps_us/EfbTWogD0YBLiNtc8kDU63sBVz6HP9zU6I3GXl_xebOuyA?e=SLjLki" },
+  // SSA General Items
+  { category: "SSA General Items", title: "Bell Schedule", url: "https://drive.google.com/file/d/1wBFiBBX4RHN4Puq7uGU0OZsf2pbc9klI/view?usp=sharing" },
+  { category: "SSA General Items", title: "Phone List", url: "https://docs.google.com/spreadsheets/d/1ako59FEMIPKXNmo3NFcCQbKPS6fOTurt/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Open House Resources", url: "https://drive.google.com/drive/folders/1tJxmZnRPF-aTtkyuzwgCFYT0JKxckMNh?usp=sharing" },
+  { category: "SSA General Items", title: "PBIS Resources", url: "https://drive.google.com/drive/folders/105Mq5kAQX1J1ztrP6JgYc3-Gw-wwugE-?usp=sharing" },
+  { category: "SSA General Items", title: "Award House Points (Form)", url: "https://docs.google.com/forms/d/e/1FAIpQLSfLZJdeQ8jUb2VF7DGC53Oj6WA1W8SPnrVb43ARtwCbTPHqWQ/viewform?usp=sharing" },
+  { category: "SSA General Items", title: "Track House Points", url: "https://docs.google.com/presentation/d/1KEnD6Totw7xBZ7W03vP8kUdrPyAdJT8uK-ezuw6jDoc/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Replacement Lanyards", url: "https://docs.google.com/forms/d/e/1FAIpQLScONsiMPrguFwLKmm5yCNHLD-F5QYFB5obxLFUoiMI_eQSndg/viewform?usp=dialog" },
+  { category: "SSA General Items", title: "Staff Houses", url: "https://docs.google.com/spreadsheets/d/1ach1iUNnRuA8tpfkrOfbxnSpPe2j1fDkvJxfj78MFU0/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Counselor Referral Form", url: "https://docs.google.com/document/d/1UyoiMsynrkvTMiar7PtsgnvdPfCL8_hi/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Staff Handbook", url: "https://drive.google.com/file/d/1Hs4_EmvsxWreZzqEBI_dcx5SYBJmyLBF/view?usp=sharing" },
+  { category: "SSA General Items", title: "F Justification Form", url: "https://docs.google.com/document/d/18rz8gd0SASi3HvXML3tsQgJ6UR58zcEm/edit?usp=sharing" },
+  { category: "SSA General Items", title: "SSN News Link", url: "https://www.youtube.com/@SouthSeminoleNews" },
+  { category: "SSA General Items", title: "Behavior Tracking Form (Paper)", url: "https://docs.google.com/document/d/1eFPzTVPhwyihyvdLg8s--XxOMBLKm9TyAtESeeVgD2w/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Behavior Tracking Form (Google)", url: "https://docs.google.com/forms/d/e/1FAIpQLSefyN7skhsqol-MEuIdYTXPz7fV5V3DCa8T8lV2rA0Coh4nhA/viewform" },
+  { category: "SSA General Items", title: "Resiliency Education Calendar", url: "https://docs.google.com/document/d/1lEnFAyderl54EsHuklZll2wCAztbM_dK/edit?usp=sharing" },
+  { category: "SSA General Items", title: "Hospitality Folder", url: "https://drive.google.com/drive/folders/1HbrM_cgod9ZM5AhF0Lpch9fNHxAuqRlm?usp=sharing" },
+  { category: "SSA General Items", title: "DPP Resources", url: "https://drive.google.com/drive/folders/1oADPQAFg-2dvhU03mocQ-nkWwBythmqj?usp=sharing" },
 
   // Instructional Items
+  { category: "Instructional Items", title: "PLT Resources Folder", url: "https://drive.google.com/drive/folders/1tNJapSfz9nsl_9WHOy-Ijl3uQsKp-Y5r?usp=sharing" },
+  { category: "Instructional Items", title: "Lesson Plan Template", url: "https://docs.google.com/document/d/1_28ON_fOEaBlnRFyt3z-lelTyiVpFU-qrCF8iheYR-4/edit?usp=sharing" },
+  { category: "Instructional Items", title: "Common Board Expectations", url: "https://docs.google.com/document/d/1HJ6orPFZqZhGUH9GArERDoIbc08GXWqM_-5vZeDibos/edit?usp=sharing" },
+  { category: "Instructional Items", title: "Teacher-Led PD's", url: "https://docs.google.com/presentation/d/1l0UYLL0JvdkCz-QzDQluRL37T6Ahyyt6oGOs_CnE4ew/edit?usp=sharing" },
+  { category: "Instructional Items", title: "FCRR Content Literacy PD", url: "https://drive.google.com/drive/folders/1oQATnd3Xl5nvmUEOEZalQ87u61qTVzRd?usp=sharing" },
   { category: "Instructional Items", title: "Student Discourse", url: "https://docs.google.com/document/d/1Cfh-5al8m6_V0uIfiDix6CPGqH78iAx2JpXQR0rtkao/edit?usp=sharing" },
-  { category: "Instructional Items", title: "PLC Notes", url: "https://docs.google.com/document/d/17shAN98CRJNJTgUJdIEm8pMNBmuTEXIa/copy" },
+  { category: "Instructional Items", title: "Academic Vocabulary Activities", url: "https://drive.google.com/drive/folders/1YehjB-339HYTKiJw22_VX8N_SofBlSM5?usp=sharing" },
   { category: "Instructional Items", title: "Super 7", url: "https://docs.google.com/document/d/1-ZDJB0He_qInPJReH047odTZyx5ZMeDMbluXhPGSixQ/edit?usp=sharing" },
+  { category: "Instructional Items", title: "Instructional Strategies Guide", url: "https://docs.google.com/document/d/1eP8537pEQD7kRj91IKmq_UouM2-A75jx/edit?usp=sharing" },
   { category: "Instructional Items", title: "Reading Strategies", url: "https://docs.google.com/document/d/1jYMSmC5TgBFxciC2mybIabqEK1d7T2ubq0r7RHIqeaI/edit?usp=sharing" },
   { category: "Instructional Items", title: "Brain Breaks", url: "https://docs.google.com/document/d/14b8FbckLZudjNiVGaPzHBxwggbhhW2nfnZuc4ii1ULU/edit?usp=sharing" },
-  { category: "Instructional Items", title: "Mindful Moments", url: "https://docs.google.com/document/d/110qiY4c6IK038j_grcJAXBMaRI3F-7fREDquka_CXgk/edit?usp=sharing" },
-  { category: "Instructional Items", title: "Elevate Referral Form (Tier 2 & RISE)", url: "https://docs.google.com/forms/d/e/1FAIpQLSdKKDRcg_1urmRKwYJpyipEgKmSU3POKC246ff-ncrPzaYHMg/viewform" },
+  { category: "Instructional Items", title: "Kagan Strategies", url: "https://docs.google.com/document/d/1gGRAJ1XBvTkQcxoL7QQuU3eCovYjNBCXHoZwb-ldF2o/edit?usp=sharing" },
   { category: "Instructional Items", title: "Top 5 Cooperative Structures", url: "https://docs.google.com/document/d/1MmzgdAECKris-X4XRVNFjOcTQUtKByh1B93j6EnSrHY/edit?usp=sharing" },
   { category: "Instructional Items", title: "Cooperative Learning Table Mats", url: "https://drive.google.com/file/d/1Uf8DfrgoPb3kdVk07sml7rpon4VHQ4dp/view?usp=sharing" },
+  { category: "Instructional Items", title: "Collaborative Learning Roles", url: "https://drive.google.com/file/d/1GNabrimlq6fjKVLHo7oasiv6wztg4uky/view?usp=sharing" },
+  { category: "Instructional Items", title: "Thinking Routines Toolbox", url: "https://pz.harvard.edu/thinking-routines" },
+  { category: "Instructional Items", title: "Whole Body Breaks", url: "https://drive.google.com/file/d/1SuWLFMCi9d5E7zwoqudmeawtoDx2XeRd/view?usp=sharing" },
+  { category: "Instructional Items", title: "Gradual Release Model", url: "https://drive.google.com/file/d/1WB95SX5c8XroW00it_OxqFMMuYMtduXK/view?usp=sharing" },
+  { category: "Instructional Items", title: "Philosophical Chairs Overview", url: "https://docs.google.com/document/d/1po9OZGGxXpKnVuOQDZjibHCumDMmnhrSurRvzfZIhLE/edit?usp=sharing" },
+  { category: "Instructional Items", title: "Probing Questions", url: "https://drive.google.com/file/d/1U9FgMEnL8gZSMXm1_WDLIhcsvnwYgDVN/view?usp=sharing" },
+  { category: "Instructional Items", title: "ELL List", url: "https://drive.google.com/drive/folders/1rEFZ75xVb1Wzk1jt5nQjHs4acY2Fb7ut?usp=sharing" },
+  { category: "Instructional Items", title: "ESOL Strategies", url: "https://drive.google.com/drive/folders/1jQfAzU4SbWAEXuGcmYit4M48YM1-hfiR?usp=drive_link" },
 
   // Testing
-  { category: "Testing", title: "Quarter 1 C9A", url: "https://drive.google.com/drive/folders/1Yg4Y18yuFYlo3MLLU1sUQ-UJPfRBkmpg?usp=sharing" },
-  { category: "Testing", title: "Quarter 2 C9A", url: "https://drive.google.com/drive/folders/1iMvBfr3OtDKbt6wgd60mP6xJNROOUwwA?usp=sharing" },
-  { category: "Testing", title: "Quarter 3 C9A", url: "https://drive.google.com/drive/folders/12apT02NaPZXnranrTG0uWXzcc9Xd-04p?usp=sharing" },
-  { category: "Testing", title: "PSAT Information", url: "https://drive.google.com/drive/folders/1UqarN9ib6B1XoW2nm8RKsaXcmM5aHsAW?usp=sharing" },
-  { category: "Testing", title: "FSA Practice Test Scripts", url: "https://drive.google.com/drive/folders/1fPhYucgOzBAllwrRzfgO85_GCSwgwzEI?usp=sharing" },
-  { category: "Testing", title: "FSA Writing", url: "https://drive.google.com/drive/folders/1A8EJGUXiGBV7iB_b9-dybqp-u_AMrIvp?usp=sharing" },
-  { category: "Testing", title: "May FSA Testing", url: "https://drive.google.com/drive/folders/1iT5WKmYt95J8b6C9xzEXtQA32H-kGSSb?usp=sharing" },
+  { category: "Testing", title: "FAST PM1 & 2 Folder", url: "https://drive.google.com/drive/folders/1yDbqQU8Qg7Ggodo0fVA2OMjXyT1Lvcnu?usp=sharing" },
+  { category: "Testing", title: "BEST, PM 3 & EOC Folder", url: "https://drive.google.com/drive/folders/1VSlIcpFRX2MJ2D5nlZtJ0hFUF9nGyaY3?usp=drive_link" },
+  { category: "Testing", title: "QBA Folder", url: "https://drive.google.com/drive/folders/1aizQIWm1nItaVrmfNRp1PrEHaWy_u6Io?usp=sharing" },
 ];
 
 const categoryIcons = {
-  "PrePlan Items": '<path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>',
-  "Leadership Items": '<path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/>',
-  "SSA Items": '<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>',
-  "Discipline Items": '<path d="M12 2l8 4v6c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6z"/>',
+  "Housekeeping": '<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-6 6a1.5 1.5 0 0 0 2 2l6-6a4 4 0 0 1 5.4-5.4l-2.6 2.6-2-2z"/>',
+  "MYP/Magnet Items": '<path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/>',
+  "SSA General Items": '<path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>',
   "Instructional Items": '<path d="M12 4.5C10 3 6.5 2.5 4 3v13c2.5-.5 6 0 8 1.5 2-1.5 5.5-2 8-1.5V3c-2.5-.5-6 0-8 1.5z"/>',
   "Testing": '<path d="M9 2h6M12 2v6M6 8h12l1.5 12a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2z"/>'
 };
