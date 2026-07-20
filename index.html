@@ -213,6 +213,32 @@ main {
   letter-spacing: 0.4px;
 }
 
+.card.unavailable {
+  cursor: default;
+  opacity: 0.6;
+}
+.card.unavailable:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line);
+}
+.card.unavailable .card-icon {
+  background: var(--line);
+  color: var(--muted);
+}
+.unavailable-badge {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  background: var(--line);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -274,10 +300,10 @@ footer a { color: var(--accent-dark); font-weight: 700; }
    nothing else on the page needs to change. */
 const resources = [
   // Housekeeping
-  { category: "Housekeeping", title: "PrePlan Schedule", url: "https://docs.google.com/document/d/15os9H9Sc2ktf9TXeW-fpTTKmA4mV1zxkZNDEQIBZiV8/edit?usp=sharing" },
-  { category: "Housekeeping", title: "Principal's Welcome Back Letter", url: "https://drive.google.com/file/d/1sobWgF98q4iz2ssYPc5iXfaIzrqr4eJz/view?usp=sharing" },
-  { category: "Housekeeping", title: "PrePlan Presentation", url: "https://docs.google.com/presentation/d/1fwEF_pUAjZ5sakxAfjDb6jdE26SYc_FHkFC1sI0LgEQ/edit?usp=sharing" },
-  { category: "Housekeeping", title: "Master Schedule", url: "https://docs.google.com/spreadsheets/d/1JEsYqLGk_Q_4a7vCW2lvWE-dC4QIWuEg/edit?usp=sharing" },
+  { category: "Housekeeping", title: "PrePlan Schedule", url: "https://docs.google.com/document/d/15os9H9Sc2ktf9TXeW-fpTTKmA4mV1zxkZNDEQIBZiV8/edit?usp=sharing", available: false },
+  { category: "Housekeeping", title: "Principal's Welcome Back Letter", url: "https://drive.google.com/file/d/1sobWgF98q4iz2ssYPc5iXfaIzrqr4eJz/view?usp=sharing", available: false },
+  { category: "Housekeeping", title: "PrePlan Presentation", url: "https://docs.google.com/presentation/d/1fwEF_pUAjZ5sakxAfjDb6jdE26SYc_FHkFC1sI0LgEQ/edit?usp=sharing", available: false },
+  { category: "Housekeeping", title: "Master Schedule", url: "https://docs.google.com/spreadsheets/d/1JEsYqLGk_Q_4a7vCW2lvWE-dC4QIWuEg/edit?usp=sharing", available: false },
   { category: "Housekeeping", title: "Schedule Change Request Form", url: "https://docs.google.com/document/d/1TO2Qgj4CzHAo0jIEoxzMad2S_cXbGdde/edit?usp=sharing" },
   { category: "Housekeeping", title: "PD/Events Calendar", url: "https://drive.google.com/file/d/1vUTOXp2nPGiL2olpeqtHbqcRvoG4A5Qt/view?usp=sharing" },
   { category: "Housekeeping", title: "SCPS Cell Phone Policy", url: "https://drive.google.com/file/d/1ClyAf5xY8T16GT7cb3DMhzB_A4aGRbqF/view?usp=sharing" },
@@ -312,7 +338,7 @@ const resources = [
   { category: "MYP/Magnet Items", title: "Career and Technical Education Courses - Resources", url: "https://sites.google.com/myscps.us/ssa-career-exploration?usp=sharing" },
 
   // SSA General Items
-  { category: "SSA General Items", title: "Bell Schedule", url: "https://drive.google.com/file/d/1wBFiBBX4RHN4Puq7uGU0OZsf2pbc9klI/view?usp=sharing" },
+  { category: "SSA General Items", title: "Bell Schedule", url: "https://drive.google.com/file/d/1wBFiBBX4RHN4Puq7uGU0OZsf2pbc9klI/view?usp=sharing", available: false },
   { category: "SSA General Items", title: "Phone List", url: "https://docs.google.com/spreadsheets/d/1ako59FEMIPKXNmo3NFcCQbKPS6fOTurt/edit?usp=sharing" },
   { category: "SSA General Items", title: "Open House Resources", url: "https://drive.google.com/drive/folders/1tJxmZnRPF-aTtkyuzwgCFYT0JKxckMNh?usp=sharing" },
   { category: "SSA General Items", title: "PBIS Resources", url: "https://drive.google.com/drive/folders/105Mq5kAQX1J1ztrP6JgYc3-Gw-wwugE-?usp=sharing" },
@@ -355,9 +381,9 @@ const resources = [
   { category: "Instructional Items", title: "ESOL Strategies", url: "https://drive.google.com/drive/folders/1jQfAzU4SbWAEXuGcmYit4M48YM1-hfiR?usp=drive_link" },
 
   // Testing
-  { category: "Testing", title: "FAST PM1 & 2 Folder", url: "https://drive.google.com/drive/folders/1yDbqQU8Qg7Ggodo0fVA2OMjXyT1Lvcnu?usp=sharing" },
-  { category: "Testing", title: "BEST, PM 3 & EOC Folder", url: "https://drive.google.com/drive/folders/1VSlIcpFRX2MJ2D5nlZtJ0hFUF9nGyaY3?usp=drive_link" },
-  { category: "Testing", title: "QBA Folder", url: "https://drive.google.com/drive/folders/1aizQIWm1nItaVrmfNRp1PrEHaWy_u6Io?usp=sharing" },
+  { category: "Testing", title: "FAST PM1 & 2 Folder", url: "https://drive.google.com/drive/folders/1yDbqQU8Qg7Ggodo0fVA2OMjXyT1Lvcnu?usp=sharing", available: false },
+  { category: "Testing", title: "BEST, PM 3 & EOC Folder", url: "https://drive.google.com/drive/folders/1VSlIcpFRX2MJ2D5nlZtJ0hFUF9nGyaY3?usp=drive_link", available: false },
+  { category: "Testing", title: "QBA Folder", url: "https://drive.google.com/drive/folders/1aizQIWm1nItaVrmfNRp1PrEHaWy_u6Io?usp=sharing", available: false },
 ];
 
 const categoryIcons = {
@@ -397,7 +423,16 @@ categories.forEach(cat => {
       <span class="category-count">${items.length} link${items.length === 1 ? "" : "s"}</span>
     </div>
     <div class="card-grid">
-      ${items.map(r => `
+      ${items.map(r => r.available === false ? `
+        <div class="card unavailable" data-title="${r.title.toLowerCase()}">
+          <div class="card-icon">${iconSvg(cat)}</div>
+          <div class="card-body">
+            <div class="card-title">${r.title}</div>
+            <div class="card-meta">${cat}</div>
+            <span class="unavailable-badge">Not Yet Available</span>
+          </div>
+        </div>
+      ` : `
         <a class="card" href="${r.url}" target="_blank" rel="noopener" data-title="${r.title.toLowerCase()}">
           <div class="card-icon">${iconSvg(cat)}</div>
           <div class="card-body">
