@@ -17,11 +17,14 @@
   --line: #e4e2dc;
   --bg: #faf8f4;
   --card: #ffffff;
-  --accent: #c65d3b;
-  --accent-dark: #a44a2d;
-  --accent-soft: #f3e3da;
-  --forest: #35594c;
-  --forest-soft: #e4ede9;
+  /* South Seminole Academy brand colors, sampled from the school logo */
+  --accent: #466b8c;
+  --accent-dark: #35526b;
+  --accent-soft: #dde7ee;
+  --forest: #9a2b43;
+  --forest-2: #6f1f31;
+  --sage: #6f9686;
+  --sage-soft: #e4eeea;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --radius: 14px;
 }
@@ -40,7 +43,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Header ─── */
 header.hero {
-  background: linear-gradient(160deg, var(--forest) 0%, #274238 100%);
+  background: linear-gradient(135deg, var(--forest-2) 0%, var(--forest) 55%, var(--accent) 100%);
   color: #fff;
   padding: 44px 24px 88px;
   text-align: center;
@@ -50,7 +53,7 @@ header.hero {
   font-size: 0.7rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
+  color: var(--sage-soft);
   font-weight: 700;
   margin-bottom: 12px;
 }
