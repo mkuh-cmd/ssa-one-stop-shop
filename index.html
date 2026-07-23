@@ -239,8 +239,9 @@ main {
   padding: 44px 24px 80px;
 }
 
-.category-section { margin-bottom: 42px; }
-.category-section.hidden { display: none; }
+.category-section { margin-bottom: 42px; transition: opacity 0.2s var(--ease); }
+
+.fade-hidden { opacity: 0 !important; pointer-events: none; }
 
 .category-heading {
   display: flex;
@@ -289,7 +290,7 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), border-color 0.15s var(--ease);
+  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), border-color 0.15s var(--ease), opacity 0.2s var(--ease);
 }
 .card-arrow {
   position: absolute;
@@ -369,8 +370,8 @@ main {
   text-align: center;
   padding: 60px 20px;
   color: var(--muted);
+  transition: opacity 0.2s var(--ease);
 }
-.empty-state.hidden { display: none; }
 .empty-icon {
   width: 52px;
   height: 52px;
@@ -483,7 +484,7 @@ footer a { color: var(--accent-dark); font-weight: 700; }
 
 <main>
   <div id="sections"></div>
-  <div class="empty-state hidden" id="emptyState">
+  <div class="empty-state fade-hidden" id="emptyState" style="display:none">
     <div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
     <h3>Nothing matches that search</h3>
     <p>Try a different word, or clear the search box.</p>
@@ -654,6 +655,24 @@ categories.forEach(cat => {
 let activeCat = "all";
 const searchInput = document.getElementById("searchInput");
 
+const FADE_MS = 180;
+
+function fadeShow(el) {
+  const isHidden = el.style.display === "none" || el.classList.contains("fade-hidden");
+  if (!isHidden) return;
+  el.style.display = "";
+  void el.offsetWidth; // force reflow so the next class removal actually transitions
+  el.classList.remove("fade-hidden");
+}
+
+function fadeHide(el) {
+  if (el.style.display === "none") return;
+  el.classList.add("fade-hidden");
+  setTimeout(() => {
+    if (el.classList.contains("fade-hidden")) el.style.display = "none";
+  }, FADE_MS);
+}
+
 function applyFilters() {
   const q = searchInput.value.trim().toLowerCase();
   let anyVisible = false;
@@ -666,15 +685,15 @@ function applyFilters() {
     section.querySelectorAll(".card").forEach(card => {
       const matchesSearch = !q || card.dataset.title.includes(q);
       const show = matchesCat && matchesSearch;
-      card.style.display = show ? "" : "none";
-      if (show) sectionHasVisibleCard = true;
+      if (show) { fadeShow(card); sectionHasVisibleCard = true; }
+      else { fadeHide(card); }
     });
 
-    section.classList.toggle("hidden", !sectionHasVisibleCard);
-    if (sectionHasVisibleCard) anyVisible = true;
+    if (sectionHasVisibleCard) { fadeShow(section); anyVisible = true; }
+    else { fadeHide(section); }
   });
 
-  emptyState.classList.toggle("hidden", anyVisible);
+  if (anyVisible) fadeHide(emptyState); else fadeShow(emptyState);
 }
 
 pillRow.addEventListener("click", e => {
