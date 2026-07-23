@@ -260,15 +260,20 @@ footer {
   border-top: 1px solid var(--line);
 }
 footer a { color: var(--accent-dark); font-weight: 700; }
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 .footer-logo {
   display: block;
-  margin: 0 auto 16px;
-  width: 140px;
-  max-width: 60%;
+  width: 110px;
+  max-width: 40%;
   height: auto;
 }
 .footer-copyright {
-  margin-top: 10px;
   font-size: 0.72rem;
   color: var(--muted);
 }
@@ -307,9 +312,10 @@ footer a { color: var(--accent-dark); font-weight: 700; }
 </main>
 
 <footer>
-  <img class="footer-logo" src="logo.png" alt="South Seminole Academy logo">
-  Missing a link, or something's out of date? Let your team lead know so it can be added or swapped here.
-  <div class="footer-copyright">&#169; 2026&#8211;2027 South Seminole Academy. All rights reserved.</div>
+  <div class="footer-row">
+    <img class="footer-logo" src="logo.png" alt="South Seminole Academy logo">
+    <div class="footer-copyright">&#169; 2026&#8211;2027 South Seminole Academy. All rights reserved.</div>
+  </div>
 </footer>
 
 <script>
