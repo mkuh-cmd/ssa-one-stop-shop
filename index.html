@@ -341,7 +341,7 @@ main {
 }
 
 .card.unavailable {
-  cursor: default;
+  cursor: pointer;
   opacity: 0.6;
 }
 .card.unavailable:hover {
@@ -364,6 +364,125 @@ main {
   background: var(--line);
   padding: 2px 8px;
   border-radius: 999px;
+}
+
+/* ─── Resource preview modal ─── */
+.preview-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 17, 20, 0.55);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.preview-overlay.open { display: flex; }
+.preview-panel {
+  background: var(--card);
+  border-radius: 16px;
+  width: min(920px, 100%);
+  height: min(82vh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.preview-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.preview-header-text { min-width: 0; flex: 1; }
+.preview-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.preview-meta {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 1px;
+}
+.preview-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.preview-open-btn:hover { background: var(--accent); color: #fff; }
+.preview-close {
+  border: none;
+  background: var(--line);
+  color: var(--ink-soft);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.preview-close svg { width: 16px; height: 16px; }
+.preview-close:hover { background: var(--forest-2); color: #fff; }
+.preview-body { flex: 1; position: relative; background: #f4f2ee; }
+.preview-body iframe { width: 100%; height: 100%; border: none; display: block; }
+.preview-unavailable-msg {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+  gap: 10px;
+  color: var(--muted);
+}
+.preview-panel.unavailable-mode .preview-body iframe { display: none; }
+.preview-panel.unavailable-mode .preview-unavailable-msg { display: flex; }
+.preview-panel.unavailable-mode .preview-open-btn { display: none; }
+.pu-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--line);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pu-icon svg { width: 24px; height: 24px; }
+.preview-unavailable-msg h4 {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  font-family: 'Sora', sans-serif;
+}
+.preview-unavailable-msg p { font-size: 0.85rem; max-width: 360px; line-height: 1.5; }
+
+@media (max-width: 600px) {
+  .preview-panel { height: 90vh; border-radius: 12px; }
+  .preview-meta { display: none; }
 }
 
 .empty-state {
@@ -490,6 +609,32 @@ footer a { color: var(--accent-dark); font-weight: 700; }
     <p>Try a different word, or clear the search box.</p>
   </div>
 </main>
+
+<div class="preview-overlay" id="previewOverlay">
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-header">
+      <div class="preview-header-text">
+        <div class="preview-title" id="previewTitle"></div>
+        <div class="preview-meta" id="previewMeta"></div>
+      </div>
+      <a class="preview-open-btn" id="previewOpenBtn" href="#" target="_blank" rel="noopener">
+        Open in new tab
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+      <button class="preview-close" id="previewCloseBtn" aria-label="Close preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="preview-body">
+      <iframe id="previewFrame" src="about:blank" title="Resource preview"></iframe>
+      <div class="preview-unavailable-msg">
+        <div class="pu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <h4>Not available yet</h4>
+        <p>This resource hasn't been finalized or added for this year. Check back later, or reach out to your team lead.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="footer-row">
@@ -629,7 +774,7 @@ categories.forEach(cat => {
     </div>
     <div class="card-grid">
       ${items.map(r => r.available === false ? `
-        <div class="card unavailable" data-title="${r.title.toLowerCase()}">
+        <div class="card unavailable" data-title="${r.title.toLowerCase()}" tabindex="0" role="button">
           <div class="card-icon">${iconSvg(cat)}</div>
           <div class="card-body">
             <div class="card-title">${r.title}</div>
@@ -718,6 +863,84 @@ window.addEventListener("scroll", () => {
   topnav.classList.toggle("scrolled", scrolled);
   filterBar.classList.toggle("scrolled", scrolled);
 }, { passive: true });
+
+/* ── Resource preview modal ──
+   Available cards open an in-page preview instead of navigating away.
+   Google Docs/Slides/Sheets/Drive-file links get rewritten to their
+   embeddable /preview form; everything else is tried as-is, with an
+   "Open in new tab" fallback for sites that refuse to be framed. */
+const previewOverlay = document.getElementById("previewOverlay");
+const previewPanel = document.getElementById("previewPanel");
+const previewTitle = document.getElementById("previewTitle");
+const previewMeta = document.getElementById("previewMeta");
+const previewFrame = document.getElementById("previewFrame");
+const previewOpenBtn = document.getElementById("previewOpenBtn");
+const previewCloseBtn = document.getElementById("previewCloseBtn");
+
+function toEmbedUrl(url) {
+  let m = url.match(/^https:\/\/docs\.google\.com\/(document|presentation|spreadsheets)\/d\/([^/]+)/);
+  if (m) return `https://docs.google.com/${m[1]}/d/${m[2]}/preview`;
+  m = url.match(/^https:\/\/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (m) return `https://drive.google.com/file/d/${m[1]}/preview`;
+  return url;
+}
+
+function openPreview({ title, category, url, available = true }) {
+  previewTitle.textContent = title;
+  previewMeta.textContent = category || "";
+  previewPanel.classList.toggle("unavailable-mode", !available);
+  if (available && url) {
+    previewFrame.src = toEmbedUrl(url);
+    previewOpenBtn.href = url;
+  } else {
+    previewFrame.src = "about:blank";
+    previewOpenBtn.href = "#";
+  }
+  previewOverlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closePreview() {
+  previewOverlay.classList.remove("open");
+  previewFrame.src = "about:blank";
+  document.body.style.overflow = "";
+}
+
+previewCloseBtn.addEventListener("click", closePreview);
+previewOverlay.addEventListener("click", e => { if (e.target === previewOverlay) closePreview(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && previewOverlay.classList.contains("open")) closePreview();
+});
+
+document.addEventListener("click", e => {
+  const unavailableCard = e.target.closest(".card.unavailable");
+  if (unavailableCard) {
+    e.preventDefault();
+    openPreview({
+      title: unavailableCard.querySelector(".card-title").textContent,
+      category: unavailableCard.querySelector(".card-meta").textContent,
+      available: false
+    });
+    return;
+  }
+  const link = e.target.closest("a.card");
+  if (!link) return;
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return; // let modified clicks open a real new tab
+  e.preventDefault();
+  openPreview({
+    title: link.querySelector(".card-title").textContent,
+    category: link.querySelector(".card-meta").textContent,
+    url: link.getAttribute("href")
+  });
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const card = e.target.closest(".card.unavailable");
+  if (!card) return;
+  e.preventDefault();
+  card.click();
+});
 </script>
 
 </body>
