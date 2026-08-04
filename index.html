@@ -486,6 +486,172 @@ main {
 }
 .preview-unavailable-msg p { font-size: 0.85rem; max-width: 360px; line-height: 1.5; }
 
+/* ─── Admin (master access) ─── */
+.admin-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 150;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.15s var(--ease), background 0.15s var(--ease);
+}
+.admin-fab:hover { transform: translateY(-2px); background: var(--accent-dark); }
+.admin-fab svg { width: 19px; height: 19px; }
+.admin-fab.active { background: var(--forest); }
+
+.admin-banner {
+  display: none;
+  position: relative;
+  z-index: 61;
+  background: var(--forest);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 7px 12px;
+}
+.admin-banner a { text-decoration: underline; cursor: pointer; margin-left: 8px; color: var(--sage-soft); }
+body.admin-mode .admin-banner { display: block; }
+
+.admin-add-bar { display: none; max-width: 1080px; margin: 0 auto 20px; padding: 0 24px; }
+body.admin-mode .admin-add-bar { display: block; }
+.admin-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--forest);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s var(--ease);
+}
+.admin-add-btn:hover { background: var(--forest-2); }
+.admin-add-btn svg { width: 14px; height: 14px; }
+
+.card-admin-controls { display: none; position: absolute; top: 10px; right: 10px; gap: 6px; z-index: 2; }
+body.admin-mode .card-admin-controls { display: flex; }
+body.admin-mode .card-arrow { display: none; }
+.card-admin-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.card-admin-btn svg { width: 13px; height: 13px; }
+.card-admin-btn.edit:hover { background: var(--accent-soft); color: var(--accent-dark); border-color: var(--accent); }
+.card-admin-btn.delete:hover { background: #f7dcd8; color: #8f3129; border-color: #b3423a; }
+
+.admin-dialog-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,17,20,0.55);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.admin-dialog-overlay.open { display: flex; }
+.admin-dialog {
+  background: var(--card);
+  border-radius: 16px;
+  width: min(460px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.admin-dialog h3 { font-family: 'Sora', sans-serif; font-size: 1.05rem; margin-bottom: 6px; color: var(--ink); }
+.admin-dialog .admin-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+.admin-dialog .admin-sub a { color: var(--accent-dark); font-weight: 700; }
+.admin-field { margin-bottom: 14px; }
+.admin-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
+}
+.admin-field input[type=text],
+.admin-field input[type=password],
+.admin-field input[type=url],
+.admin-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font: 500 0.88rem 'Manrope', sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+.admin-field input:focus, .admin-field select:focus { border-color: var(--accent); outline: none; }
+.admin-field-hint { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+.admin-checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--ink-soft); }
+.admin-actions { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+.admin-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font: 700 0.85rem 'Manrope', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), opacity 0.15s var(--ease);
+}
+.admin-btn.primary { background: var(--accent); color: #fff; }
+.admin-btn.primary:hover { background: var(--accent-dark); }
+.admin-btn.danger { background: #b3423a; color: #fff; }
+.admin-btn.danger:hover { background: #8f3129; }
+.admin-btn.ghost { background: var(--line); color: var(--ink-soft); }
+.admin-btn.ghost:hover { background: #d8d5cd; }
+.admin-btn:disabled { opacity: 0.55; cursor: default; }
+.admin-status { font-size: 0.78rem; margin-top: 12px; padding: 8px 10px; border-radius: 8px; display: none; line-height: 1.4; }
+.admin-status.show { display: block; }
+.admin-status.info { background: var(--accent-soft); color: var(--accent-dark); }
+.admin-status.error { background: #f7dcd8; color: #8f3129; }
+.admin-status.success { background: var(--sage-soft); color: #2c4a3e; }
+
+.admin-toast {
+  position: fixed;
+  bottom: 76px;
+  right: 20px;
+  z-index: 250;
+  max-width: 320px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+  display: none;
+}
+.admin-toast.show { display: block; }
+.admin-toast.info { background: var(--ink); color: #fff; }
+.admin-toast.error { background: #b3423a; color: #fff; }
+.admin-toast.success { background: var(--forest); color: #fff; }
+
 @media (max-width: 600px) {
   .preview-panel {
     width: 100vw;
@@ -587,6 +753,11 @@ footer a { color: var(--accent-dark); font-weight: 700; }
   </div>
 </nav>
 
+<div class="admin-banner" id="adminBanner">
+  Admin mode — changes publish live to everyone
+  <a id="adminExitLink">Exit</a>
+</div>
+
 <header class="hero">
   <div class="hero-label">South Seminole Academy · 2026&#8211;2027</div>
   <div class="hero-title-row">
@@ -609,6 +780,13 @@ footer a { color: var(--accent-dark); font-weight: 700; }
   <div class="pill-row" id="pillRow">
     <div class="pill active" data-cat="all">All</div>
   </div>
+</div>
+
+<div class="admin-add-bar">
+  <button class="admin-add-btn" id="adminAddBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+    Add Resource
+  </button>
 </div>
 
 <main>
@@ -646,6 +824,16 @@ footer a { color: var(--accent-dark); font-weight: 700; }
   </div>
 </div>
 
+<button class="admin-fab" id="adminFab" aria-label="Admin">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+</button>
+
+<div class="admin-dialog-overlay" id="adminDialogOverlay">
+  <div class="admin-dialog" id="adminDialog"></div>
+</div>
+
+<div class="admin-toast" id="adminToast"></div>
+
 <footer>
   <div class="footer-row">
     <img class="footer-logo" src="logo.png" alt="South Seminole Academy logo">
@@ -656,7 +844,10 @@ footer a { color: var(--accent-dark); font-weight: 700; }
 <script>
 /* ── Single source of truth for every resource on this page. ──
    To add/remove/replace a link during the year, just edit this array —
-   nothing else on the page needs to change. */
+   nothing else on the page needs to change. Also editable live via the
+   Admin panel (see ADMIN block below), which rewrites this exact block
+   in the committed file — keep the START/END markers intact. */
+/* RESOURCES_DATA_START */
 const resources = [
   // Housekeeping
   { category: "Housekeeping", title: "PrePlan Schedule", url: "https://docs.google.com/document/d/1XiUukL6ux7YdU7io04U5ehV2WTbFCcuMZgK4YeOjPyQ/edit?tab=t.0" },
@@ -744,6 +935,7 @@ const resources = [
   { category: "Testing", title: "BEST, PM 3 & EOC Folder", url: "https://drive.google.com/drive/folders/1VSlIcpFRX2MJ2D5nlZtJ0hFUF9nGyaY3?usp=drive_link", available: false },
   { category: "Testing", title: "QBA Folder", url: "https://drive.google.com/drive/folders/1aizQIWm1nItaVrmfNRp1PrEHaWy_u6Io?usp=sharing", available: false },
 ];
+/* RESOURCES_DATA_END */
 
 const categoryIcons = {
   "Housekeeping": '<path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-6 6a1.5 1.5 0 0 0 2 2l6-6a4 4 0 0 1 5.4-5.4l-2.6 2.6-2-2z"/>',
@@ -758,54 +950,77 @@ function iconSvg(cat) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${categoryIcons[cat] || defaultIcon}</svg>`;
 }
 
-const categories = [...new Set(resources.map(r => r.category))];
+let categories = [...new Set(resources.map(r => r.category))];
 const sectionsEl = document.getElementById("sections");
 const pillRow = document.getElementById("pillRow");
 const emptyState = document.getElementById("emptyState");
 
-categories.forEach(cat => {
-  const pill = document.createElement("div");
-  pill.className = "pill";
-  pill.dataset.cat = cat;
-  pill.textContent = cat;
-  pillRow.appendChild(pill);
-});
+const editIconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const trashIconSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
 
-categories.forEach(cat => {
-  const items = resources.filter(r => r.category === cat);
-  const section = document.createElement("section");
-  section.className = "category-section";
-  section.dataset.cat = cat;
-  section.innerHTML = `
-    <div class="category-heading">
-      <div class="category-heading-icon">${iconSvg(cat)}</div>
-      <h2>${cat}</h2>
-      <span class="category-count">${items.length} link${items.length === 1 ? "" : "s"}</span>
-    </div>
-    <div class="card-grid">
-      ${items.map(r => r.available === false ? `
-        <div class="card unavailable" data-title="${r.title.toLowerCase()}" tabindex="0" role="button">
-          <div class="card-icon">${iconSvg(cat)}</div>
-          <div class="card-body">
-            <div class="card-title">${r.title}</div>
-            <div class="card-meta">${cat}</div>
-            <span class="unavailable-badge">Not Yet Available</span>
+function adminControlsHtml(idx) {
+  return `
+    <div class="card-admin-controls">
+      <button type="button" class="card-admin-btn edit" data-admin-edit="${idx}" aria-label="Edit resource">${editIconSvg}</button>
+      <button type="button" class="card-admin-btn delete" data-admin-delete="${idx}" aria-label="Delete resource">${trashIconSvg}</button>
+    </div>`;
+}
+
+function renderAll() {
+  categories = [...new Set(resources.map(r => r.category))];
+  pillRow.innerHTML = `<div class="pill active" data-cat="all">All</div>`;
+  sectionsEl.innerHTML = "";
+
+  categories.forEach(cat => {
+    const pill = document.createElement("div");
+    pill.className = "pill";
+    pill.dataset.cat = cat;
+    pill.textContent = cat;
+    pillRow.appendChild(pill);
+  });
+
+  categories.forEach(cat => {
+    const items = resources.map((r, i) => ({ ...r, _idx: i })).filter(r => r.category === cat);
+    const section = document.createElement("section");
+    section.className = "category-section";
+    section.dataset.cat = cat;
+    section.innerHTML = `
+      <div class="category-heading">
+        <div class="category-heading-icon">${iconSvg(cat)}</div>
+        <h2>${cat}</h2>
+        <span class="category-count">${items.length} link${items.length === 1 ? "" : "s"}</span>
+      </div>
+      <div class="card-grid">
+        ${items.map(r => r.available === false ? `
+          <div class="card unavailable" data-title="${r.title.toLowerCase()}" tabindex="0" role="button">
+            <div class="card-icon">${iconSvg(cat)}</div>
+            <div class="card-body">
+              <div class="card-title">${r.title}</div>
+              <div class="card-meta">${cat}</div>
+              <span class="unavailable-badge">Not Yet Available</span>
+            </div>
+            ${adminControlsHtml(r._idx)}
           </div>
-        </div>
-      ` : `
-        <a class="card" href="${r.url}" target="_blank" rel="noopener" data-title="${r.title.toLowerCase()}">
-          <div class="card-icon">${iconSvg(cat)}</div>
-          <div class="card-body">
-            <div class="card-title">${r.title}</div>
-            <div class="card-meta">${cat}</div>
-          </div>
-          <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
-        </a>
-      `).join("")}
-    </div>
-  `;
-  sectionsEl.appendChild(section);
-});
+        ` : `
+          <a class="card" href="${r.url}" target="_blank" rel="noopener" data-title="${r.title.toLowerCase()}">
+            <div class="card-icon">${iconSvg(cat)}</div>
+            <div class="card-body">
+              <div class="card-title">${r.title}</div>
+              <div class="card-meta">${cat}</div>
+            </div>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+            ${adminControlsHtml(r._idx)}
+          </a>
+        `).join("")}
+      </div>
+    `;
+    sectionsEl.appendChild(section);
+  });
+
+  if (typeof updateHeroStats === "function") updateHeroStats();
+}
+
+renderAll();
 
 let activeCat = "all";
 const searchInput = document.getElementById("searchInput");
@@ -862,9 +1077,12 @@ pillRow.addEventListener("click", e => {
 
 searchInput.addEventListener("input", applyFilters);
 
-const liveCount = resources.filter(r => r.available !== false).length;
-document.getElementById("heroStats").innerHTML =
-  `<span>${resources.length} resources</span><span class="dot"></span><span>${categories.length} categories</span><span class="dot"></span><span>${liveCount} live</span>`;
+function updateHeroStats() {
+  const liveCount = resources.filter(r => r.available !== false).length;
+  document.getElementById("heroStats").innerHTML =
+    `<span>${resources.length} resources</span><span class="dot"></span><span>${categories.length} categories</span><span class="dot"></span><span>${liveCount} live</span>`;
+}
+updateHeroStats();
 
 const topnav = document.getElementById("topnav");
 const filterBar = document.getElementById("filterBar");
@@ -923,6 +1141,20 @@ document.addEventListener("keydown", e => {
 });
 
 document.addEventListener("click", e => {
+  const editBtn = e.target.closest("[data-admin-edit]");
+  if (editBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    openResourceForm(Number(editBtn.dataset.adminEdit));
+    return;
+  }
+  const deleteBtn = e.target.closest("[data-admin-delete]");
+  if (deleteBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    deleteResource(Number(deleteBtn.dataset.adminDelete));
+    return;
+  }
   const unavailableCard = e.target.closest(".card.unavailable");
   if (unavailableCard) {
     e.preventDefault();
@@ -951,6 +1183,338 @@ document.addEventListener("keydown", e => {
   e.preventDefault();
   card.click();
 });
+
+/* ── Admin (master access) ──
+   Password just gates the in-page UI (it's visible in source, so treat it
+   as a courtesy lock, not real security). The actual write access comes
+   from a GitHub personal access token, entered once and stored only in
+   this browser's localStorage, that commits changes straight to this
+   repo via the GitHub Contents API. Scope that token (fine-grained PAT)
+   to ONLY this repo with "Contents: Read and write" — nothing more. */
+const ADMIN_PASSWORD = "SSAOneStopShop2027!";
+const GH_OWNER = "mkuh-cmd";
+const GH_REPO = "ssa-one-stop-shop";
+const GH_BRANCH = "main";
+const GH_API = "https://api.github.com";
+const GH_FILE_PATH = "index.html";
+const TOKEN_KEY = "ssaOssGithubToken";
+const UNLOCK_KEY = "ssaOssAdminUnlocked";
+
+const adminFab = document.getElementById("adminFab");
+const adminBanner = document.getElementById("adminBanner");
+const adminExitLink = document.getElementById("adminExitLink");
+const adminAddBtn = document.getElementById("adminAddBtn");
+const adminDialogOverlay = document.getElementById("adminDialogOverlay");
+const adminDialog = document.getElementById("adminDialog");
+const adminToast = document.getElementById("adminToast");
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ""; }
+function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+function isUnlocked() { return sessionStorage.getItem(UNLOCK_KEY) === "1"; }
+function setUnlocked() { sessionStorage.setItem(UNLOCK_KEY, "1"); }
+function setLocked() { sessionStorage.removeItem(UNLOCK_KEY); }
+
+function showToast(msg, type = "info", ms = 4000) {
+  adminToast.textContent = msg;
+  adminToast.className = `admin-toast show ${type}`;
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => adminToast.classList.remove("show"), ms);
+}
+
+function openDialog(html) {
+  adminDialog.innerHTML = html;
+  adminDialogOverlay.classList.add("open");
+}
+function closeDialog() {
+  adminDialogOverlay.classList.remove("open");
+  adminDialog.innerHTML = "";
+}
+adminDialogOverlay.addEventListener("click", e => { if (e.target === adminDialogOverlay) closeDialog(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDialog(); });
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  bytes.forEach(b => { binary += String.fromCharCode(b); });
+  return btoa(binary);
+}
+function base64ToUtf8(b64) {
+  const binary = atob(b64.replace(/\n/g, ""));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function ghRequest(path, options = {}) {
+  const res = await fetch(`${GH_API}/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
+    ...options,
+    headers: {
+      Authorization: `token ${getToken()}`,
+      Accept: "application/vnd.github+json",
+      ...(options.headers || {})
+    }
+  });
+  if (!res.ok) {
+    let detail = "";
+    try { detail = (await res.json()).message || ""; } catch (e) {}
+    const err = new Error(`GitHub ${options.method || "GET"} ${path} failed (${res.status})${detail ? ": " + detail : ""}`);
+    err.status = res.status;
+    throw err;
+  }
+  return res.status === 204 ? null : res.json();
+}
+function ghGetFile(path) { return ghRequest(`${encodeURIComponent(path)}?ref=${GH_BRANCH}`); }
+function ghPutFile(path, contentBase64, sha, message) {
+  const body = { message, content: contentBase64, branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+  return ghRequest(encodeURIComponent(path), { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+}
+function ghDeleteFile(path, sha, message) {
+  return ghRequest(encodeURIComponent(path), { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message, sha, branch: GH_BRANCH }) });
+}
+
+function serializeResources(list) {
+  const lines = list.map(r => {
+    const parts = [`category: ${JSON.stringify(r.category)}`, `title: ${JSON.stringify(r.title)}`, `url: ${JSON.stringify(r.url)}`];
+    if (r.available === false) parts.push("available: false");
+    return `  { ${parts.join(", ")} },`;
+  });
+  return `const resources = [\n${lines.join("\n")}\n];`;
+}
+
+async function saveResourcesToGitHub() {
+  const file = await ghGetFile(GH_FILE_PATH);
+  const currentText = base64ToUtf8(file.content);
+  const re = /\/\* RESOURCES_DATA_START \*\/[\s\S]*?\/\* RESOURCES_DATA_END \*\//;
+  if (!re.test(currentText)) throw new Error("Could not find the resources markers in index.html — nothing was changed.");
+  const newBlock = `/* RESOURCES_DATA_START */\n${serializeResources(resources)}\n/* RESOURCES_DATA_END */`;
+  const updatedText = currentText.replace(re, newBlock);
+  await ghPutFile(GH_FILE_PATH, utf8ToBase64(updatedText), file.sha, "Admin: update resources via master access panel");
+}
+
+async function uploadResourceFile(file) {
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "-");
+  const path = `uploads/${Date.now()}-${safeName}`;
+  const base64 = await fileToBase64(file);
+  await ghPutFile(path, base64, undefined, `Admin: upload ${safeName}`);
+  return path;
+}
+
+async function deleteUploadedFile(path) {
+  try {
+    const file = await ghGetFile(path);
+    await ghDeleteFile(path, file.sha, `Admin: remove ${path}`);
+  } catch (e) {
+    console.warn("Could not delete uploaded file (may already be gone):", e.message);
+  }
+}
+
+function enterAdminMode() {
+  document.body.classList.add("admin-mode");
+  adminFab.classList.add("active");
+}
+function exitAdminMode() {
+  document.body.classList.remove("admin-mode");
+  adminFab.classList.remove("active");
+  setLocked();
+  closeDialog();
+}
+
+function openPasswordStep() {
+  openDialog(`
+    <h3>Admin Access</h3>
+    <p class="admin-sub">Enter the master access password to manage resources on this page.</p>
+    <div class="admin-field">
+      <label>Password</label>
+      <input type="password" id="adminPwInput" autocomplete="off">
+    </div>
+    <div class="admin-status" id="adminPwStatus"></div>
+    <div class="admin-actions">
+      <button class="admin-btn ghost" id="adminPwCancel" type="button">Cancel</button>
+      <button class="admin-btn primary" id="adminPwSubmit" type="button">Unlock</button>
+    </div>
+  `);
+  const input = document.getElementById("adminPwInput");
+  const status = document.getElementById("adminPwStatus");
+  input.focus();
+  const submit = () => {
+    if (input.value === ADMIN_PASSWORD) {
+      setUnlocked();
+      if (getToken()) { closeDialog(); enterAdminMode(); }
+      else openTokenStep();
+    } else {
+      status.textContent = "Incorrect password.";
+      status.className = "admin-status show error";
+    }
+  };
+  document.getElementById("adminPwSubmit").addEventListener("click", submit);
+  document.getElementById("adminPwCancel").addEventListener("click", closeDialog);
+  input.addEventListener("keydown", e => { if (e.key === "Enter") submit(); });
+}
+
+function openTokenStep() {
+  openDialog(`
+    <h3>Connect GitHub</h3>
+    <p class="admin-sub">
+      Master access publishes changes straight to this site's repo (<strong>${GH_OWNER}/${GH_REPO}</strong>).
+      Paste a GitHub personal access token with write access to just that repo —
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">create a fine-grained token</a>
+      scoped only to it, with "Contents: Read and write" permission.
+    </p>
+    <div class="admin-field">
+      <label>GitHub Token</label>
+      <input type="password" id="adminTokenInput" autocomplete="off" placeholder="github_pat_...">
+    </div>
+    <div class="admin-field-hint">Stored only in this browser's local storage — never sent anywhere except directly to GitHub's API.</div>
+    <div class="admin-status" id="adminTokenStatus"></div>
+    <div class="admin-actions">
+      <button class="admin-btn ghost" id="adminTokenCancel" type="button">Cancel</button>
+      <button class="admin-btn primary" id="adminTokenSubmit" type="button">Save &amp; Continue</button>
+    </div>
+  `);
+  const input = document.getElementById("adminTokenInput");
+  const status = document.getElementById("adminTokenStatus");
+  input.focus();
+  document.getElementById("adminTokenCancel").addEventListener("click", closeDialog);
+  document.getElementById("adminTokenSubmit").addEventListener("click", async () => {
+    const token = input.value.trim();
+    if (!token) { status.textContent = "Paste a token first."; status.className = "admin-status show error"; return; }
+    setToken(token);
+    status.textContent = "Checking access…";
+    status.className = "admin-status show info";
+    try {
+      await ghGetFile(GH_FILE_PATH);
+      closeDialog();
+      enterAdminMode();
+      showToast("Admin mode on — you're connected to GitHub.", "success");
+    } catch (err) {
+      clearToken();
+      status.textContent = "Couldn't verify that token against the repo: " + err.message;
+      status.className = "admin-status show error";
+    }
+  });
+}
+
+adminFab.addEventListener("click", () => {
+  if (document.body.classList.contains("admin-mode")) { exitAdminMode(); return; }
+  if (isUnlocked() && getToken()) { enterAdminMode(); return; }
+  if (isUnlocked()) { openTokenStep(); return; }
+  openPasswordStep();
+});
+adminExitLink.addEventListener("click", exitAdminMode);
+adminAddBtn.addEventListener("click", () => openResourceForm(null));
+
+function openResourceForm(idx) {
+  const isEdit = idx !== null && idx !== undefined;
+  const r = isEdit ? resources[idx] : { category: "", title: "", url: "", available: true };
+  openDialog(`
+    <h3>${isEdit ? "Edit Resource" : "Add Resource"}</h3>
+    <div class="admin-field">
+      <label>Title</label>
+      <input type="text" id="rfTitle" value="${escapeHtml(r.title)}">
+    </div>
+    <div class="admin-field">
+      <label>Category</label>
+      <input type="text" id="rfCategory" list="rfCategoryList" value="${escapeHtml(r.category)}">
+      <datalist id="rfCategoryList">${categories.map(c => `<option value="${escapeHtml(c)}">`).join("")}</datalist>
+      <div class="admin-field-hint">Pick an existing category, or type a new name to create one.</div>
+    </div>
+    <div class="admin-field">
+      <label>Link URL</label>
+      <input type="url" id="rfUrl" value="${escapeHtml(r.url || "")}" placeholder="https://…">
+    </div>
+    <div class="admin-field">
+      <label>Or upload a file</label>
+      <input type="file" id="rfFile">
+      <div class="admin-field-hint">Uploading a file replaces the URL above with a link to the uploaded copy.</div>
+    </div>
+    <div class="admin-field admin-checkbox-row">
+      <input type="checkbox" id="rfAvailable" ${r.available !== false ? "checked" : ""}>
+      <label style="margin:0;text-transform:none;font-weight:600;">Available (uncheck to mark "Not Yet Available")</label>
+    </div>
+    <div class="admin-status" id="rfStatus"></div>
+    <div class="admin-actions">
+      <button class="admin-btn ghost" id="rfCancel" type="button">Cancel</button>
+      ${isEdit ? `<button class="admin-btn danger" id="rfDelete" type="button">Delete</button>` : ""}
+      <button class="admin-btn primary" id="rfSave" type="button">${isEdit ? "Save Changes" : "Add Resource"}</button>
+    </div>
+  `);
+  document.getElementById("rfCancel").addEventListener("click", closeDialog);
+  if (isEdit) document.getElementById("rfDelete").addEventListener("click", () => { closeDialog(); deleteResource(idx); });
+  document.getElementById("rfSave").addEventListener("click", () => saveResourceForm(idx));
+}
+
+async function saveResourceForm(idx) {
+  const isEdit = idx !== null && idx !== undefined;
+  const status = document.getElementById("rfStatus");
+  const title = document.getElementById("rfTitle").value.trim();
+  const category = document.getElementById("rfCategory").value.trim();
+  let url = document.getElementById("rfUrl").value.trim();
+  const available = document.getElementById("rfAvailable").checked;
+  const file = document.getElementById("rfFile").files[0];
+  const saveBtn = document.getElementById("rfSave");
+
+  if (!title || !category || (!url && !file)) {
+    status.textContent = "Title, category, and either a URL or a file are required.";
+    status.className = "admin-status show error";
+    return;
+  }
+
+  saveBtn.disabled = true;
+  status.textContent = file ? "Uploading file…" : "Saving…";
+  status.className = "admin-status show info";
+
+  try {
+    if (file) url = await uploadResourceFile(file);
+    const newEntry = { category, title, url };
+    if (!available) newEntry.available = false;
+
+    if (isEdit) resources[idx] = newEntry;
+    else resources.push(newEntry);
+
+    renderAll();
+    status.textContent = "Publishing to GitHub…";
+    await saveResourcesToGitHub();
+    closeDialog();
+    showToast(`"${title}" ${isEdit ? "updated" : "added"} — live in about a minute.`, "success");
+  } catch (err) {
+    status.textContent = "Couldn't save: " + err.message;
+    status.className = "admin-status show error";
+    saveBtn.disabled = false;
+  }
+}
+
+async function deleteResource(idx) {
+  const r = resources[idx];
+  if (!r) return;
+  if (!confirm(`Delete "${r.title}"? This publishes immediately for everyone.`)) return;
+  const [removed] = resources.splice(idx, 1);
+  renderAll();
+  showToast("Deleting…", "info", 8000);
+  try {
+    await saveResourcesToGitHub();
+    showToast(`"${removed.title}" deleted.`, "success");
+    if (removed.url && !/^https?:\/\//i.test(removed.url) && removed.url.startsWith("uploads/")) {
+      deleteUploadedFile(removed.url);
+    }
+  } catch (err) {
+    resources.splice(idx, 0, removed);
+    renderAll();
+    showToast("Couldn't delete: " + err.message, "error", 6000);
+  }
+}
 </script>
 
 </body>
